@@ -1,12 +1,13 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial scale=1.0">
-	<title>Service Ordering</title>
+	<title>Rentfy - @yield('title')</title>
 	<!--Link to CSS -->
-	<link rel="stylesheet" href="css/so1.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/css/styles.css">
 	<!-- Box icons-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 </head>
@@ -15,39 +16,25 @@
 	<header>
 		<div class="nav container">
 			<!--Logo-->
-			<a href ="" class= "logo"><i class='bx bxs-home'></i>Rentfy</a>
+			<a href ="/" class= "logo"><i class='bx bxs-home'></i>Rentfy</a>
 			<!--list -->
-			<ul class="navbar">
-				<li><a  href = "#home">Home</a></li>
+			<ul class="navigationbar">
+				<li><a  href = "/">Home</a></li>
 				<li><a  href = "#about">About us</a></li>
-				<li><a  href = "#sales">Sales</a></li>
-				<li><a  href = "#properties">Properties</a></li>
+				<li><a  href = "/service">Services</a></li>
+				<li><a  href = "/search">Properties</a></li>
 			</ul>
 			<!-- Log in Button -->
-			<a href= "a" class="btn">Log In</a>
+			<a href= "a" class="button">Log in</a>
 		</div>
 	</header>
-	<!--Services-->
-	<section class ="service container" id="service">
-		<!--Box 1-->
-		<div class="box">
-			<i class='bx bx-user' ></i>
-			<h3>Cleaning Services</h3>
-			<p>Lorem ipsum,dolor sit amet consectetur adispicing Lorem ipsum</p><br>
-			<a href="#" class="btn">Choose Me!!</a>
-		</div>
-		<!--Box 2-->
-		<div class="box">
-			<i class='bx bx-car'></i>
-			<h3>Move in/Move out services</h3>
-			<p>Lorem ipsum,dolor sit amet consectetur adispicing Lorem ipsum</p><br>
-			<a href="#" class="btn">Choose Me!!</a>
-		</div>
-	</section>
-	<!--Footer-->
+    <!--Content-->
+    @section('content')
+    @show
+    <!--Footer-->
 	<section class="footer">
 		<div class="footer-container container">
-			<h2>R.state</h2>
+			<h2>Rentfy</h2>
 			<div class="footer-box">
 				<h3>Locations</h3>
 				<a href="#">UNIMY</a>
@@ -57,7 +44,7 @@
 		<div class="footer-box">
 				<h3>Contact</h3>
 				<a href="#">0123456789</a>
-				<a href="#">yourmail@gmail.com</a>
+				<a href="#">teamx@gmail.com</a>
 				<div class="social">
 					<a href="#"><i class='bx bxl-facebook'></i></a>
 					<a href="#"><i class='bx bxl-twitter'></i></a>

@@ -23,8 +23,15 @@
 img{
 	width: 100%;
 }
-body{
+#home{
 	color: var(--text-color);
+	background-image: url(../images/img2.jpg);
+	background-size: cover;
+	background-position: center
+}
+
+a{
+	text-decoration: none;
 }
 
 section{
@@ -63,63 +70,86 @@ header{
 	font-size: 24px;
 	color: var(--main-color);
 }
-.navbar{
+.navigationbar{
 	display: flex;
 }
-.navbar a{
+.navigationbar a{
 	padding: 8px 17px;
 	color: var(--text-color);
 	font-size: 1rem;
 	text-transform: uppercase;
 	font-weight: 500;
 }
-.navbar a:hover {
+.navigationbar a:hover {
 	color: var(--main-color);
 }
-
-.btn{
-	padding: 10px 22px;
+.button{
+	padding: 8px 22px;
 	background: var(--main-color);
 	color: var(--bg-color);
 	border-radius: 5rem;
 }
-.btn:hover{
+.button:hover{
 	background: #3492fd;
+	color: white;
+	cursor:pointer;
 }
-/*Service*/
-.service{
-	display: grid;
-	grid-template-columns: repeat(auto-fit,minmax(240px,auto));
-	gap: 2.4rem;
+.overflow-x{
+	overflow-x: auto;
 }
-.service .box{
-	padding: 60px;
+
+/*Main & search bar*/
+.home-title{
+	color: white;
+	text-shadow: black 1px 1px 10px;
+}
+.main{
+	min-height: 100vh;
+	background-size: cover;
+	background-position: center
+}
+.searchbar{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: 2rem;
+	justify-content: center;
+	text-align: center;
+}
+.searchbar h2{
+	font-size: 1.7rem;
+}
+.searchbar form{
 	background: var(--bg-color);
 	box-shadow: var(--box-shadow);
-	text-align: center;
-	border-radius: 2rem;
-	height: 400px;
+	padding: 6px 10px;
+	border-radius: 5rem;
 }
-.service .box:hover{
-	background: var(--main-color);
-	color: var(--bg-color);
-	transition: 0.4s all linear;
+.searchbar form input{
+	border: none;
+	outline: none;
+	font-size: 1rem;
 }
-.service .box .bx{
-	padding: 10px;
-	border-radius: 50%;
-	background: #f6f6fe;
-	color: var(--main-color);
-	font-size: 40px;
+.searchbar #text-box{
+	width: 280px;
 }
-.service .box h3{
-	font-size: 1.1rem;
-	margin: 1rem 0 0.4rem;
+.search-dropdown{
+	padding: 8px 22px;
+	border-radius: 5rem;
 }
-.service .box p{
-	font-size: 0.938rem;
-	margin: 1rem 0 3rem;
+.searchbar .button{
+	padding: 12px 34px;
+	font-weight: 500;
+	text-transform: uppercase;
+	cursor: pointer;
 }
+.searchbar .search-dropdown{
+	padding: 12px 34px;
+	font-weight: 500;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
 /* Footer */
 .footer{
 	background: var(--main-color);
@@ -165,4 +195,43 @@ header{
 	text-align: center;
 	color: var(--bg-color);
 	background: var(--main-color);
+}
+.card{
+	color:black
+}
+
+/* Properties list */
+.properties-container .card:hover{
+	transform: translateY(-10px);
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+/* Service ordering */
+.service{
+	padding-top:120px;
+}
+.service .card{
+	height: 80vh;
+}
+.service .card:hover{
+	
+	transition: 0.5s;
+	cursor: pointer;
+}
+.chosen{
+	display:none;
+	background-color: var(--main-color);
+	color: white;
+	position:absolute;
+	width: 100%;
+}
+.service .card:hover .chosen{
+	display:block;
+}
+.mx-25{
+	margin:25vh;
+}
+.icon-size{
+	font-size:100px;
 }

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Home;
+use App\Http\Controllers\Property;
+use App\Http\Controllers\Service;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [Home::class, 'home']);
+Route::get('/search', [Property::class, 'search']);
+Route::get('/service', [Service::class, 'serviceSelect']);
+Route::get('/service/provider', [Service::class, 'serviceProviderSelect']);
+Route::get('/service/property', [Service::class, 'servicePropertySelect']);
+Route::get('/service/type', [Service::class, 'serviceServiceSelect']);
+Route::get('/service/form', [Service::class, 'serviceForm']);
+Route::post('/service/submit', [Service::class, 'serviceSubmit']);
