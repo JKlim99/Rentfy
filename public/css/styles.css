@@ -235,3 +235,19 @@ header{
 .icon-size{
 	font-size:100px;
 }
+
+.login-form{
+	margin-top:6rem;
+	box-shadow: var(--box-shadow);
+	padding: 60px 30px 60px 30px;
+	border-radius: 3rem;
+	background-color: white;
+}
+
+#togglePassword, #toggleConfirmPassword{
+	cursor: pointer;
+}
+
+#profile{
+	margin-top: 3rem
+}

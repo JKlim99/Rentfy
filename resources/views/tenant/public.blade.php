@@ -10,7 +10,15 @@
 	<link rel="stylesheet" href="/css/styles.css">
 	<!-- Box icons-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+	<script src="https://kit.fontawesome.com/290a44aa5b.js" crossorigin="anonymous"></script>
 </head>
+<?php
+	$session = session('id') ?? null;
+	$loggedIn = false;
+	if($session){
+		$loggedIn = true;
+	}
+?>
 <body>
 	<!--Navbar-->
 	<header>
@@ -25,7 +33,17 @@
 				<li><a  href = "/search">Properties</a></li>
 			</ul>
 			<!-- Log in Button -->
-			<a href= "a" class="button">Log in</a>
+			@if($loggedIn)
+			<div>
+				<a href= "/profile/{{session('id')}}" class="button">Profile</a>
+				<a href= "/logout" class="button">Logout</a>
+			</div>
+			@else
+			<div>
+				<a href= "/login" class="button">Log In</a>
+				<a href= "/register" class="button">Sign Up</a>
+			</div>
+			@endif
 		</div>
 	</header>
     <!--Content-->
