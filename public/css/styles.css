@@ -43,13 +43,13 @@ section{
 	margin-right: auto;
 }
 header{
-	display: blocl;
 	width: 100%;
 	background: var(--bg-color);
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 100;
+	border-bottom: rgba(0,0,0,.125) solid 1px;
 }
 .nav{
 	display: flex;
@@ -102,13 +102,14 @@ header{
 .home-title{
 	color: white;
 	text-shadow: black 1px 1px 10px;
+	padding: 40px 0px;
 }
 .main{
 	min-height: 100vh;
 	background-size: cover;
 	background-position: center
 }
-.searchbar{
+.desktop-searchbar{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -116,34 +117,34 @@ header{
 	justify-content: center;
 	text-align: center;
 }
-.searchbar h2{
+.desktop-searchbar h2{
 	font-size: 1.7rem;
 }
-.searchbar form{
+.desktop-searchbar form{
 	background: var(--bg-color);
 	box-shadow: var(--box-shadow);
 	padding: 6px 10px;
 	border-radius: 5rem;
 }
-.searchbar form input{
+.desktop-searchbar form input{
 	border: none;
 	outline: none;
 	font-size: 1rem;
 }
-.searchbar #text-box{
+.desktop-searchbar #text-box{
 	width: 280px;
 }
 .search-dropdown{
 	padding: 8px 22px;
 	border-radius: 5rem;
 }
-.searchbar .button{
+.desktop-searchbar .button{
 	padding: 12px 34px;
 	font-weight: 500;
 	text-transform: uppercase;
 	cursor: pointer;
 }
-.searchbar .search-dropdown{
+.desktop-searchbar .search-dropdown{
 	padding: 12px 34px;
 	font-weight: 500;
 	text-transform: uppercase;
@@ -250,4 +251,29 @@ header{
 
 #profile, #property{
 	margin-top: 3rem
+}
+
+.show-button, .desktop-searchbar{
+	display: none;
+}
+
+@media screen and (min-width: 992px) {
+	.navbar-collapse{
+		flex-grow: 0;
+	}
+	.container-fluid.my-container-fluid{
+		justify-content: center;
+	}
+	.navbar-nav{
+		text-align: center;
+	}
+	.navigation-link{
+		padding: 10px 100px;
+	}
+	.hide, .mobile-searchbar{
+		display: none;
+	}
+	.show-button, .desktop-searchbar{
+		display: block;
+	}
 }

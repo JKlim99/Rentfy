@@ -1,5 +1,5 @@
 @extends('tenant.public')
-@section('title', 'User Profile')
+@section('title', 'Edit Profile')
 @section('content')
 
 <?php
