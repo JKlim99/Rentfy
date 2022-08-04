@@ -18,7 +18,7 @@
 		</div>
 
         <div class="mb-4">
-            <select name="user_type" id="user_type" class="form-control">
+            <select name="user_type" id="user_type" class="form-select">
                 <option>- Select User Type * -</option>
                 <option value="tenant" @if(old('user_type')=='tenant')selected @endif>Tenant</option>
                 <option value="landlord" @if(old('user_type')=='landlord')selected @endif>Landlord</option>
@@ -42,7 +42,7 @@
         </div>
 
         <div class="mb-4">
-            <select name="state" id="state" class="form-control">
+            <select name="state" id="state" class="form-select">
                 <option value="">- Select State -</option>
                 <option value="selangor">Selangor</option>
                 <option value="kuala lumpur">Kuala Lumpur</option>

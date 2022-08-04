@@ -20,14 +20,14 @@ if($user->id == $loggedInUser){
                             class="rounded-circle img-fluid" style="width: 150px;">
                         <h5 class="my-3" id="nickname">{{ucfirst($user->first_name)}}</h5>
                         <p class="text-muted mb-1">
-                            <select name="user_type" id="user_type" class="form-control">
+                            <select name="user_type" id="user_type" class="form-select">
                                 <option>- Select User Type * -</option>
                                 <option value="tenant" @if($user->user_type=='tenant')selected @endif>Tenant</option>
                                 <option value="landlord" @if($user->user_type=='landlord')selected @endif>Landlord</option>
                             </select>    
                         </p>
                         <p class="text-muted mb-4">
-                            <select name="state" id="state" class="form-control">
+                            <select name="state" id="state" class="form-select">
                                 <option value="">- Select State -</option>
                                 <option value="selangor" @if($user->state=='selangor')selected @endif>Selangor</option>
                                 <option value="kuala lumpur" @if($user->state=='kuala lumpur')selected @endif>Kuala Lumpur</option>

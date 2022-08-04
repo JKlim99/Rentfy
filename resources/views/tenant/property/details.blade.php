@@ -5,6 +5,13 @@
 $state = $_GET['state'] ?? null;
 $i = 0;
 $service_count = 0;
+
+$owner = false;
+$loggedInUser = session('id') ?? null;
+if($user->id == $loggedInUser){
+    $owner = true;
+}
+
 ?>
 <section class="properties container" id="property">
 	<div class="row">
@@ -12,7 +19,7 @@ $service_count = 0;
 			<div class="card mb-4">
 				<div class="card-body">
 					<p class="card-text"><small class="text-muted">Published on {{\Carbon\Carbon::parse($property->created_at)->format('d M Y')}}</small></p>
-					<h2>{{$property->name}}</h2>
+					<h2>{{$property->name}} ({{$property->building_type}})</h2>
 					<div class="icon">
 						<i class='bx bxs-bed'><span>{{$property->number_of_bedroom}}</span></i>
 						<i class='bx bxs-bath'><span>{{$property->number_of_bathroom}}</span></i>
@@ -89,9 +96,17 @@ $service_count = 0;
 			</div>
 		</div>
 		<div class="col-lg-4">
-			<div class="mb-4">
-				<a class="btn btn-primary form-control" href="/">Rent Now</a>
-			</div>
+			@if(!$owner)
+				@if($rent_information)
+				<div class="mb-4">
+					<a class="btn btn-primary form-control">{{ucfirst($rent_information->status)}}</a>
+				</div>
+				@else
+				<div class="mb-4">
+					<a class="btn btn-primary form-control" href="/rent/{{$property->id}}">Rent Now</a>
+				</div>
+				@endif
+			@endif
 			<div class="card mb-4">
 				<div class="card-header">
 					Listed by
@@ -99,7 +114,7 @@ $service_count = 0;
 				<div class="card-body text-center">
 					<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
 						class="rounded-circle img-fluid" style="width: 150px;">
-					<h5 class="my-3">{{ucfirst($user->first_name)}}</h5>
+					<h5 class="my-3">{{ucfirst($user->first_name)}} @if($owner) (You) @endif</h5>
 					<p class="text-muted mb-4">{{ucfirst($user->state)}}</p>
 					<div class="d-flex justify-content-center mb-2">
 						<a type="button" class="btn btn-primary ms-1" href="/profile/{{$user->id}}">View Profile</a>

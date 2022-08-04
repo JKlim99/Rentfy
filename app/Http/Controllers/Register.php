@@ -35,6 +35,7 @@ class Register extends Controller
 
         $inputs = $request->except(['confirm_password', '_token']);
         $user = UserModel::create($inputs);
+        $user->update(['password'=>md5($password)]);
         $request->session()->put('id', $user->id);
         $request->session()->put('type', 'tenant');
         return redirect('/');

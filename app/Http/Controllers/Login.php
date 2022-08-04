@@ -23,7 +23,7 @@ class Login extends Controller
             return redirect()->back()->withErrors(['message' => 'User not found.'])->withInput($request->all());
         }
 
-        if($user->password != $password)
+        if($user->password != md5($password))
         {
             return redirect()->back()->withErrors(['message' => 'Incorrect password.'])->withInput($request->all());
         }
