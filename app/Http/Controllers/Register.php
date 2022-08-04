@@ -15,7 +15,7 @@ class Register extends Controller
     public function register(Request $request)
     {
         $user_type = $request->input('user_type', null);
-        if($user_type)
+        if(!$user_type)
         {
             return redirect()->back()->withErrors(['message' => 'Please select your user type.'])->withInput($request->all());
         }

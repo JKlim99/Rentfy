@@ -7,6 +7,7 @@
 	<title>Rentfy - @yield('title')</title>
 	<!--Link to CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="/css/styles.css">
 	<!-- Box icons-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
@@ -28,7 +29,6 @@
 			<!--list -->
 			<ul class="navigationbar">
 				<li><a  href = "/">Home</a></li>
-				<li><a  href = "#about">About us</a></li>
 				<li><a  href = "/service">Services</a></li>
 				<li><a  href = "/search">Properties</a></li>
 			</ul>

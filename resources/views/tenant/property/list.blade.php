@@ -47,70 +47,35 @@ $state = $_GET['state'] ?? null;
 	<br>
 	<div class="properties-container container">
 		<div class="row">
+			@foreach($properties as $property)
 			<div class="col-sm-6">
-				<a href="/">
+				<a href="/property/{{$property->id}}">
 					<div class="card mb-3">
 						<img src="/images/img2.jpg" class="card-img-top properties-list-img" alt="room-image">
 						<div class="card-body">
-							<h5 class="card-title">Middle Room at Kota Damansara (RM1000/month)</h5>
+							<h5 class="card-title">{{ucfirst($property->name)}} ({{ucfirst($property->building_type)}})</h5>
 							<div class="icon">
-								<i class='bx bxs-bed'><span>5</span></i>
-								<i class='bx bxs-bath'><span>2</span></i>
+								<i class='bx bxs-bed'><span>{{$property->number_of_bedroom}}</span></i>
+								<i class='bx bxs-bath'><span>{{$property->number_of_bathroom}}</span></i>
+								<i class='bx bx-shape-square'><span>{{$property->area_size}}</span></i>
 							</div>
-							<p class="card-text">Bukit Jalil, Kuala Lumpur</p>
-							<p class="card-text"><small class="text-muted">Published on 20 September 2022</small></p>
+							<p class="card-text">{{ucfirst($property->city)}}, {{ucfirst($property->state)}}</p>
+							<p class="card-text"><small class="text-muted">Published on {{\Carbon\Carbon::parse($property->created_at)->format('d M Y')}}</small></p>
 						</div>
 					</div>
 				</a>
 			</div>
-			<div class="col-sm-6">
-				<a href="/">
-					<div class="card mb-3">
-						<img src="/images/img3.jpg" class="card-img-top properties-list-img" alt="room-image">
-						<div class="card-body">
-							<h5 class="card-title">Middle Room at Kota Damansara (RM1000/month)</h5>
-							<div class="icon">
-								<i class='bx bxs-bed'><span>5</span></i>
-								<i class='bx bxs-bath'><span>2</span></i>
-							</div>
-							<p class="card-text">Bukit Jalil, Kuala Lumpur</p>
-							<p class="card-text"><small class="text-muted">Published on 20 September 2022</small></p>
-						</div>
-					</div>
-				</a>
+			@endforeach
+			@if(count($properties) < 1)
+			<div class="d-flex align-items-center justify-content-center vh-100">
+				<div class="text-center">
+					<p class="fs-3"> <span class="text-danger">Opps!</span> Result not found.</p>
+					<p class="lead">
+						We could not find the property you're looking for.
+					  </p>
+				</div>
 			</div>
-			<div class="col-sm-6">
-				<a href="/">
-					<div class="card mb-3">
-						<img src="/images/img2.jpg" class="card-img-top properties-list-img" alt="room-image">
-						<div class="card-body">
-							<h5 class="card-title">Middle Room at Kota Damansara (RM1000/month)</h5>
-							<div class="icon">
-								<i class='bx bxs-bed'><span>5</span></i>
-								<i class='bx bxs-bath'><span>2</span></i>
-							</div>
-							<p class="card-text">Bukit Jalil, Kuala Lumpur</p>
-							<p class="card-text"><small class="text-muted">Published on 20 September 2022</small></p>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-sm-6">
-				<a href="/">
-					<div class="card mb-3">
-						<img src="/images/img3.jpg" class="card-img-top properties-list-img" alt="room-image">
-						<div class="card-body">
-							<h5 class="card-title">Middle Room at Kota Damansara (RM1000/month)</h5>
-							<div class="icon">
-								<i class='bx bxs-bed'><span>5</span></i>
-								<i class='bx bxs-bath'><span>2</span></i>
-							</div>
-							<p class="card-text">Bukit Jalil, Kuala Lumpur</p>
-							<p class="card-text"><small class="text-muted">Published on 20 September 2022</small></p>
-						</div>
-					</div>
-				</a>
-			</div>
+			@endif
 		</div>
 	</div>
 </section>

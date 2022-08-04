@@ -248,6 +248,6 @@ header{
 	cursor: pointer;
 }
 
-#profile{
+#profile, #property{
 	margin-top: 3rem
 }

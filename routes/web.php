@@ -24,6 +24,7 @@ use App\Http\Middleware\TenantLogin;
 
 Route::get('/', [Home::class, 'home']);
 Route::get('/search', [Property::class, 'search']);
+Route::get('/property/{id}', [Property::class, 'details']);
 Route::get('/service', [Service::class, 'serviceSelect']);
 Route::get('/profile/{id}', [Profile::class, 'profilePage']);
 
@@ -36,6 +37,8 @@ Route::middleware([TenantGuest::class])->group(function () {
 
 Route::middleware([TenantLogin::class])->group(function () {
     Route::get('/logout', [Login::class, 'logout']);
+    Route::get('/editprofile', [Profile::class, 'editProfilePage']);
+    Route::post('/editprofile', [Profile::class, 'updateProfile']);
     Route::get('/service/provider', [Service::class, 'serviceProviderSelect']);
     Route::get('/service/property', [Service::class, 'servicePropertySelect']);
     Route::get('/service/type', [Service::class, 'serviceServiceSelect']);

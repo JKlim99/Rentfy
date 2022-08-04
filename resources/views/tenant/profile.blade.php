@@ -60,6 +60,7 @@ if($user->id == $loggedInUser){
                     </div>
                 </div>
             </div>
+            @if($user->user_type == 'landlord')
             <div class="row">
                 <div class="col-md-12">
                     <div class="card mb-4 mb-md-0">
@@ -71,16 +72,31 @@ if($user->id == $loggedInUser){
 							<div class="icon">
 								<i class='bx bxs-bed'><span>{{$property->number_of_bedroom}}</span></i>
 								<i class='bx bxs-bath'><span>{{$property->number_of_bathroom}}</span></i>
+                                <i class='bx bx-shape-square'><span>{{$property->area_size}}</span></i>
 							</div>
 							<p class="card-text">{{ucfirst($property->city)}}, {{ucfirst($property->state)}}</p>
 							<p class="card-text"><small class="text-muted">Published on {{\Carbon\Carbon::parse($property->created_at)->format('d M Y')}}</small></p>
-                            <a class="btn btn-primary">View more</a>
+                            <a class="btn btn-primary" href="/property/{{$property->id}}">View more</a>
                             <hr/>
                             @endforeach
                         </div>
                     </div>
                 </div>
             </div>
+            @endif
+            @if($user->user_type == 'tenant')
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4 mb-md-0">
+                        <div class="card-body">
+                            <p class="mb-4"><span class="text-primary font-italic me-1">Reviews</span>
+                            </p>
+                            {{-- add review loop --}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
     </div>
     </div>
