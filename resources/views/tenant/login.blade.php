@@ -33,12 +33,6 @@
         <div class="mb-4">
             <p style="color:red">{{$errors->first()?? null}}</p>
         </div>
-
-        <div class="row mb-4">
-            <div class="col">
-                <a href="/forgotpassword">Forgot password?</a>
-            </div>
-        </div>
 		
 		<button type="submit" class="btn btn-primary btn-block form-control">Log in</button>
 		

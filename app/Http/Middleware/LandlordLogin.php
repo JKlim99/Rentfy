@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class TenantGuest
+class LandlordLogin
 {
     /**
      * Handle an incoming request.
@@ -17,9 +17,15 @@ class TenantGuest
     public function handle(Request $request, Closure $next)
     {
         $session = $request->session()->get('type') ?? null;
-        if($session)
+        if(!$session)
         {
-            return redirect('/');
+            return redirect('/login');
+        }
+        else{
+            if($session == 'tenant')
+            {
+                return redirect('/');
+            }
         }
         return $next($request);
     }

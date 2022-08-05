@@ -102,9 +102,13 @@ if($user->id == $loggedInUser){
 					<a class="btn btn-primary form-control">{{ucfirst($rent_information->status)}}</a>
 				</div>
 				@else
-				<div class="mb-4">
-					<a class="btn btn-primary form-control" href="/rent/{{$property->id}}">Rent Now</a>
-				</div>
+					@if($rent_information_by_others)
+					<a class="btn btn-primary form-control">Not Available</a>
+					@else
+					<div class="mb-4">
+						<a class="btn btn-primary form-control" href="/rent/{{$property->id}}">Rent Now</a>
+					</div>
+					@endif
 				@endif
 			@endif
 			<div class="card mb-4">

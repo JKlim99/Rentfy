@@ -7,9 +7,15 @@ use App\Http\Controllers\Register;
 use App\Http\Controllers\Property;
 use App\Http\Controllers\Service;
 use App\Http\Controllers\Profile;
+use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\Rental;
+use App\Http\Controllers\Invoice;
+use App\Http\Controllers\RentedProperty;
+use App\Http\Controllers\RepairService;
 
 use App\Http\Middleware\TenantGuest;
 use App\Http\Middleware\TenantLogin;
+use App\Http\Middleware\LandlordLogin;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,4 +52,26 @@ Route::middleware([TenantLogin::class])->group(function () {
     Route::post('/service/submit', [Service::class, 'serviceSubmit']);
     Route::get('/rent/{id}', [Property::class, 'rentPage']);
     Route::post('/rent', [Property::class, 'rent']);
+    Route::get('/bills', [Invoice::class, 'billingList']);
+    Route::get('/pay/{id}', [Invoice::class, 'payBill']);
+    Route::get('/success', [Invoice::class, 'success']);
+    Route::get('/cancel', [Invoice::class, 'cancel']);
+    Route::get('/rented', [RentedProperty::class, 'rentedList']);
+    Route::get('/cancel/rent/{id}', [RentedProperty::class, 'cancelRentRequest']);
+    Route::get('/terminate/rent/{id}', [RentedProperty::class, 'terminateRent']);
+});
+
+Route::middleware([LandlordLogin::class])->group(function () {
+    Route::get('/dashboard', [Dashboard::class, 'dashboard']);
+    Route::get('/rental', [Rental::class, 'rentalList']);
+    Route::get('/rental/{id}', [Rental::class, 'rentalDetails']);
+    Route::post('/acceptrental/{id}', [Rental::class, 'acceptRental']);
+    Route::get('/rejectrental/{id}', [Rental::class, 'rejectRental']);
+    Route::get('/terminaterental/{id}', [Rental::class, 'terminateRental']);
+    Route::get('/manage/service', [RepairService::class, 'serviceList']);
+    Route::get('/service/{id}', [RepairService::class, 'serviceDetails']);
+    Route::post('/service/{id}', [RepairService::class, 'serviceUpdate']);
+    Route::get('/create/service', [RepairService::class, 'serviceCreateForm']);
+    Route::post('/create/service', [RepairService::class, 'serviceCreate']);
+    Route::get('/delete/service/{id}', [RepairService::class, 'serviceDelete']);
 });

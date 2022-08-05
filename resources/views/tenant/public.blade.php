@@ -39,22 +39,38 @@
                         <a class="nav-item nav-link" href="/">Home</a>
                         <a class="nav-item nav-link" href="/service">Services</a>
                         <a class="nav-item nav-link" href="/search">Properties</a>
-						@if($loggedIn)
-							<a href="/profile/{{session('id')}}" class="nav-item nav-link hide">Profile</a> 
-							<a href="/logout" class="nav-item nav-link hide">Logout</a>
-						@else
-							<a href="/login" class="nav-item nav-link hide">Log In</a> 
-							<a href="/register" class="nav-item nav-link hide">Sign Up</a>
-						@endif
+                        @if($loggedIn)
+                        <a href="/profile/{{session('id')}}" class="nav-item nav-link hide">My Profile</a>
+                        <a href="/bills" class="nav-item nav-link hide">Billing and Payment</a>
+                        <a href="/rented" class="nav-item nav-link hide">Rented Properties</a>
+                        @if(session('type') == 'landlord')
+                        <a href="/dashboard" class="nav-item nav-link hide">Landlord Dashboard</a>
+                        @endif
+                        <a href="/logout" class="nav-item nav-link hide">Logout</a>
+                        @else
+                        <a href="/login" class="nav-item nav-link hide">Log In</a>
+                        <a href="/register" class="nav-item nav-link hide">Sign Up</a>
+                        @endif
                     </div>
                     @if($loggedIn)
-                    <div class="show-button">
-                        <a href="/profile/{{session('id')}}" class="btn btn-primary">Profile</a> 
-                        <a href="/logout" class="btn btn-outline-primary">Logout</a>
-                    </div>
+                    <li class="nav-item dropdown show-button">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a href="/profile/{{session('id')}}" class="dropdown-item">My Profile</a></li>
+                            <li><a href="/bills" class="dropdown-item">Billing and Payment</a></li>
+                            <li><a href="/rented" class="dropdown-item">Rented Properties</a></li>
+                            @if(session('type') == 'landlord')
+                            <li><a href="/dashboard" class="dropdown-item">Landlord Dashboard</a></li>
+                            @endif
+                            <li><a href="/logout" class="dropdown-item">Logout</a></li>
+                        </ul>
+                    </li>
                     @else
                     <div class="show-button">
-                        <a href="/login" class="btn btn-primary">Log In</a> 
+                        <a href="/login" class="btn btn-primary">Log In</a>
                         <a href="/register" class="btn btn-outline-primary">Sign Up</a>
                     </div>
                     @endif

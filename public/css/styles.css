@@ -249,7 +249,7 @@ header{
 	cursor: pointer;
 }
 
-#profile, #property{
+#profile, #property, #dashboard{
 	margin-top: 3rem
 }
 
@@ -276,4 +276,8 @@ header{
 	.show-button, .desktop-searchbar{
 		display: block;
 	}
+}
+
+.dashboard-icon{
+	font-size: 30px;
 }

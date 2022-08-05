@@ -84,19 +84,6 @@ if($user->id == $loggedInUser){
                 </div>
             </div>
             @endif
-            @if($user->user_type == 'tenant')
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card mb-4 mb-md-0">
-                        <div class="card-body">
-                            <p class="mb-4"><span class="text-primary font-italic me-1">Reviews</span>
-                            </p>
-                            {{-- add review loop --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endif
         </div>
     </div>
     </div>

@@ -37,7 +37,7 @@ class Register extends Controller
         $user = UserModel::create($inputs);
         $user->update(['password'=>md5($password)]);
         $request->session()->put('id', $user->id);
-        $request->session()->put('type', 'tenant');
+        $request->session()->put('type', $user->user_type);
         return redirect('/');
     }
 }

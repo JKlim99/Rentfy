@@ -1,5 +1,5 @@
 @extends('tenant.public')
-@section('title', 'Rentfy - 404 Not Found')
+@section('title', '404 Not Found')
 @section('content')
 <div class="d-flex align-items-center justify-content-center vh-100">
     <div class="text-center">

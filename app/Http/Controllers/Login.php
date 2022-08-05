@@ -29,7 +29,13 @@ class Login extends Controller
         }
 
         $request->session()->put('id', $user->id);
-        $request->session()->put('type', 'tenant');
+        $request->session()->put('type', $user->user_type);
+
+        if($user->user_type == 'landlord')
+        {
+            return redirect('/profile/'.$user->id);
+        }
+
         return redirect('/');
     }
 

@@ -1,5 +1,5 @@
 @extends('tenant.public')
-@section('title', 'Property Details')
+@section('title', 'Rent Now')
 @section('content')
 <?php
 $state = $_GET['state'] ?? null;

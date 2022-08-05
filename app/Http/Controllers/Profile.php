@@ -52,6 +52,7 @@ class Profile extends Controller
 
         $inputs = $request->except(['confirm_password', '_token']);
         $user = UserModel::where('id', $user_id)->update($inputs);
+        $request->session()->put('type', $user_type);
         return redirect('/profile/'.$user_id);
     }
 }

@@ -47,13 +47,19 @@ class Property extends Controller
         $prices = PropertyPriceModel::where('property_id', $id)->get();
         $images = PropertyImageModel::where('property_id', $id)->get();
         $services = PropertyRepairServiceModel::where('property_id', $id)->get();
-        $rent_information = PropertyTenantModel::where('user_id', $user_id)->where('property_id', $id)->where('status','!=','expired')->where('status','!=','cancelled')->first();
+        $rent_information = PropertyTenantModel::where('user_id', $user_id)->where('property_id', $id)->where('status','!=','expired')->where('status','!=','cancelled')->where('status','!=','rejected')->where('status','!=','terminated')->first();
+        $rent_information_by_others = PropertyTenantModel::where('property_id', $id)->where('status','!=','pending')->where('status','!=','expired')->where('status','!=','cancelled')->where('status','!=','rejected')->where('status','!=','terminated')->first();
         $user = UserModel::find($property->user_id);
-        return view('tenant.property.details')->with(['property'=>$property, 'prices'=>$prices, 'images'=>$images, 'user'=>$user, 'services'=>$services, 'rent_information'=>$rent_information]);
+        return view('tenant.property.details')->with(['property'=>$property, 'prices'=>$prices, 'images'=>$images, 'user'=>$user, 'services'=>$services, 'rent_information'=>$rent_information, 'rent_information_by_others'=>$rent_information_by_others]);
     }
 
     public function rentPage($id)
     {
+        $rent_information = PropertyTenantModel::where('property_id', $id)->where('status','!=','pending')->where('status','!=','expired')->where('status','!=','cancelled')->where('status','!=','rejected')->where('status','!=','terminated')->first();
+        if($rent_information)
+        {
+            return abort(404, "Page not found");
+        }
         $user_id = session('id');
         $property = PropertyModel::find($id);
         $owner = UserModel::find($property->user_id);
