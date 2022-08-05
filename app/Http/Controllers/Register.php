@@ -15,7 +15,7 @@ class Register extends Controller
     public function register(Request $request)
     {
         $user_type = $request->input('user_type', null);
-        if($user_type)
+        if(!$user_type)
         {
             return redirect()->back()->withErrors(['message' => 'Please select your user type.'])->withInput($request->all());
         }
@@ -35,6 +35,7 @@ class Register extends Controller
 
         $inputs = $request->except(['confirm_password', '_token']);
         $user = UserModel::create($inputs);
+        $user->update(['password'=>md5($password)]);
         $request->session()->put('id', $user->id);
         $request->session()->put('type', 'tenant');
         return redirect('/');
