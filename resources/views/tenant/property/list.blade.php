@@ -80,10 +80,10 @@ $state = $_GET['state'] ?? null;
 	<div class="properties-container container">
 		<div class="row">
 			@foreach($properties as $property)
-			<div class="col-sm-6">
+			<div class="col-sm-6 d-flex align-items-stretch">
 				<a href="/property/{{$property->id}}">
 					<div class="card mb-3">
-						<img src="/images/img2.jpg" class="card-img-top properties-list-img" alt="room-image">
+						<img src="{{$property->image_url}}" class="card-img-top properties-list-img" alt="room-image">
 						<div class="card-body">
 							<h5 class="card-title">{{ucfirst($property->name)}} ({{ucfirst($property->building_type)}})</h5>
 							<div class="icon">

@@ -11,6 +11,13 @@ class PropertyRepairServiceModel extends Model
     use HasFactory;
     protected $table = 'properties_repair_service';
 
+    public $timestamps = false;
+
+    protected $fillable = [
+        'repair_service_id',
+        'property_id'
+    ];
+
     public function detail()
     {
         return $this->belongsTo(RepairServiceModel::class, 'repair_service_id');

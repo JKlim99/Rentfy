@@ -18,6 +18,7 @@ class Property extends Controller
         $value = $request->input('value', null);
         if($state){
             $properties = PropertyModel::where('state',$state)
+                                        ->where('listing_status', 'published')
                                         ->where(function($query) use ($value){
                                             $query->where('name', 'LIKE', '%'.$value.'%');
                                             $query->orWhere('city', 'LIKE', '%'.$value.'%');
@@ -26,7 +27,8 @@ class Property extends Controller
                                         ->get();    
         }
         else{
-            $properties = PropertyModel::where(function($query) use ($value){
+            $properties = PropertyModel::where('listing_status', 'published')
+                                        ->where(function($query) use ($value){
                                             $query->where('name', 'LIKE', '%'.$value.'%');
                                             $query->orWhere('city', 'LIKE', '%'.$value.'%');
                                             $query->orWhere('building_type', 'LIKE', '%'.$value.'%');

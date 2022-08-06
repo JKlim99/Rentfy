@@ -12,6 +12,7 @@ use App\Http\Controllers\Rental;
 use App\Http\Controllers\Invoice;
 use App\Http\Controllers\RentedProperty;
 use App\Http\Controllers\RepairService;
+use App\Http\Controllers\Properties;
 
 use App\Http\Middleware\TenantGuest;
 use App\Http\Middleware\TenantLogin;
@@ -74,4 +75,11 @@ Route::middleware([LandlordLogin::class])->group(function () {
     Route::get('/create/service', [RepairService::class, 'serviceCreateForm']);
     Route::post('/create/service', [RepairService::class, 'serviceCreate']);
     Route::get('/delete/service/{id}', [RepairService::class, 'serviceDelete']);
+    Route::get('/manage/property', [Properties::class, 'propertyList']);
+    Route::get('/properties/{id}', [Properties::class, 'propertyDetails']);
+    Route::post('/properties/{id}', [Properties::class, 'propertyUpdate']);
+    Route::get('/create/price/{id}', [Properties::class, 'createPrice']);
+    Route::get('/delete/price/{id}', [Properties::class, 'deletePrice']);
+    Route::get('/create/properties', [Properties::class, 'propertyCreateForm']);
+    Route::post('/create/properties', [Properties::class, 'propertyCreate']);
 });

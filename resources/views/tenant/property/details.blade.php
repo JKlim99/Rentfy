@@ -72,6 +72,12 @@ if($user->id == $loggedInUser){
 			</div>
 			<div class="card mb-4">
 				<div class="card-body">
+					<h3>Address</h3>
+					<p>{{$property->address1}}, {{$property->address2}}<br/>{{$property->postcode}} {{$property->city}}<br/>{{$property->state}}, {{$property->country}}</p>
+				</div>
+			</div>
+			<div class="card mb-4">
+				<div class="card-body">
 					<h3>Pricing</h3>
 					@foreach($prices as $price)
 					{{$price->interval}} month(s) contract: RM {{$price->price}}/month <br/>

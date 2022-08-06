@@ -9,4 +9,12 @@ class PropertyPriceModel extends Model
 {
     use HasFactory;
     protected $table = 'properties_price';
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'property_id',
+        'interval',
+        'price'
+    ];
 }
