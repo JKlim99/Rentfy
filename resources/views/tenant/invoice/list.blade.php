@@ -19,6 +19,7 @@
                                     <th scope="col">Amount</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Issue Date</th>
+                                    <th scope="col">Pay before</th>
                                     <th scope="col">Paid On</th>
                                 </tr>
                             </thead>
@@ -30,6 +31,7 @@
                                     <td>RM {{$invoice->amount}}</td>
                                     <td>@if($invoice->payment_date) PAID @else <a href="/pay/{{$invoice->id}}">PAY NOW</a>@endif</td>
                                     <td>{{\Carbon\Carbon::parse($invoice->created_at)->format('d M Y')}}</td>
+                                    <td>{{\Carbon\Carbon::parse($invoice->created_at)->addDays(14)->format('d M Y')}}</td>
                                     @if($invoice->payment_date)
                                     <td>{{\Carbon\Carbon::parse($invoice->payment_date)->format('d M Y')}}</td>
                                     @else

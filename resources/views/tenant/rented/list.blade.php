@@ -11,7 +11,7 @@
             @foreach($rentals as $rental)
 			<div class="col-sm-6">
 				<div class="card mb-3">
-					<img src="/images/img2.jpg" class="card-img-top properties-list-img" alt="room-image">
+					<img src="{{$rental->image_url}}" class="card-img-top properties-list-img" alt="room-image">
 					<div class="card-body">
 						<h5 class="card-title"><a href="/property/{{$rental->property_id}}">{{ucfirst($rental->name)}} ({{ucfirst($rental->building_type)}})</a></h5>
 						<div class="icon">

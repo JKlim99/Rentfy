@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Models\UserModel;
 use App\Models\InvoiceModel;
 use App\Models\PropertyTenantModel;
+use App\Models\PropertyModel;
 use DB;
 use Carbon\Carbon;
 
@@ -57,6 +59,18 @@ class Rental extends Controller
             'payment_date' => null,
             'rental_id' => $id
         ]);
+
+        $tenant = UserModel::find($rental->user_id);
+        $property = PropertyModel::find($rental->property_id);
+
+        $data = array('greet' => 'Hi '.$tenant->first_name.', ', 'messages' => 'Your rental request on "'.$property->name.'" has been accepted by the owner. ', 'uri' => '/rented');
+        $to_email = $tenant->email;
+        $mailSubject = "Rentfy | Congratulation! Your rental requst has been accepted.";
+        Mail::send('emails.mail', $data, function($message) use ($to_email, $mailSubject) {
+            $message->to($to_email)
+                    ->subject($mailSubject);
+        });
+        
         return redirect('/rental');
     }
 
