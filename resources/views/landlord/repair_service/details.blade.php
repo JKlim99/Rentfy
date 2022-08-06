@@ -83,7 +83,7 @@
                         <hr>
                         <div class="text-center">
                             <input type="submit" class="btn btn-primary" value="Update"/>
-                            <a class="btn btn-danger" href="/delete/service/{{$service->id}}">Delete</a>
+                            <a class="btn btn-danger" href="/delete/service/{{$service->id}}" onclick="return confirm('Are you sure you want to delete the repair service?');">Delete</a>
                         </div>
                         </form>
                     </div>

@@ -232,7 +232,7 @@
                                         {{$i}}. <input type="number" name="interval[]" value="{{$price->interval}}" required/> month(s) contract - RM <input type="number" name="price[]" value="{{$price->price}}" required/> /month
                                     </div>
                                     <div class="text-end">
-                                        <a class="btn btn-danger" href="/delete/price/{{$price->id}}?property_id={{$property->id}}">Remove</a>
+                                        <a class="btn btn-danger" href="/delete/price/{{$price->id}}?property_id={{$property->id}}" onclick="return confirm('Are you sure you want to remove this rental option?');">Remove</a>
                                     </div>
                                 </p>
                                 <hr>

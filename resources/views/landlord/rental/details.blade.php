@@ -65,12 +65,12 @@
                             <hr>
                             <div class="text-center">
                                 <input type="submit" class="btn btn-primary" value="Accept"/>
-                                <a class="btn btn-danger" href="/rejectrental/{{$rental->id}}">Reject</a>
+                                <a class="btn btn-danger" href="/rejectrental/{{$rental->id}}" onclick="return confirm('Are you sure you want to reject the rental request?');">Reject</a>
                             </div>
                             @elseif($rental->status == 'renting')
                             <hr>
                             <div class="text-center">
-                                <a class="btn btn-danger" href="/terminaterental/{{$rental->id}}">Terminate</a>
+                                <a class="btn btn-danger" href="/terminaterental/{{$rental->id}}" onclick="return confirm('Are you sure you want to terminate the rental?');">Terminate</a>
                             </div>
                             @endif
                         </form>

@@ -6,7 +6,7 @@
 	<br/>
 	<div class="row">
 		<div class="col-sm-6">
-			<a href="/service/provider">
+			<a href="/service/provider?type=cleaning">
 				<div class="card text-center">
 					<div class="card-header chosen">
 						Choose
@@ -22,7 +22,7 @@
 			</a>
 		</div>
 		<div class="col-sm-6">
-			<a href="/service/provider">
+			<a href="/service/provider?type=moving">
 				<div class="card text-center">
 					<div class="card-header chosen">
 						Choose

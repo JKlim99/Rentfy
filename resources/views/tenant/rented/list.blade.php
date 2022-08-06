@@ -25,9 +25,9 @@
 						<p class="card-text"><small class="text-muted">Contract validity: {{\Carbon\Carbon::parse($rental->created_at)->format('d M Y')}} - {{\Carbon\Carbon::parse($rental->created_at)->addMonths($rental->interval)->format('d M Y')}}</small>
 							<br/><small class="text-muted">Owner: <a href="/profile/{{$rental->owner_id}}">{{$rental->first_name.' '.$rental->last_name}}</a></small></p>
 						@if($rental->status == 'renting')
-						<a href="/terminate/rent/{{$rental->rental_id}}" class="btn btn-danger form-control">Terminate</a>
+						<a href="/terminate/rent/{{$rental->rental_id}}" class="btn btn-danger form-control" onclick="return confirm('Are you sure you want to terminate the rental?');">Terminate</a>
 						@elseif($rental->status == 'pending')
-						<a href="/cancel/rent/{{$rental->rental_id}}" class="btn btn-secondary form-control">Cancel</a>
+						<a href="/cancel/rent/{{$rental->rental_id}}" class="btn btn-secondary form-control" onclick="return confirm('Are you sure you want to cancel the rental request?');">Cancel</a>
 						@endif
 					</div>
 				</div>

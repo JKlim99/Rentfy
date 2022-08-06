@@ -51,6 +51,7 @@ Route::middleware([TenantLogin::class])->group(function () {
     Route::get('/service/type', [Service::class, 'serviceServiceSelect']);
     Route::get('/service/form', [Service::class, 'serviceForm']);
     Route::post('/service/submit', [Service::class, 'serviceSubmit']);
+    Route::get('/service/success', [Service::class, 'success']);
     Route::get('/rent/{id}', [Property::class, 'rentPage']);
     Route::post('/rent', [Property::class, 'rent']);
     Route::get('/bills', [Invoice::class, 'billingList']);
