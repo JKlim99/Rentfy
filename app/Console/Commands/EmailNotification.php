@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 use App\Models\InvoiceModel;
 use App\Models\UserModel;
 use App\Models\PropertyModel;
+use App\Models\PropertyTenantModel;
 use \Carbon\Carbon;
 
 class EmailNotification extends Command
@@ -34,6 +35,11 @@ class EmailNotification extends Command
     {
         $invoices = InvoiceModel::where('next_payment_date', Carbon::now()->format('Y-m-d'))->get();
         for($i=0; $i<count($invoices); $i++){
+            $rental = PropertyTenantModel::find($invoices[$i]->rental_id);
+            if($rental->end_at <= $invoices[$i]->next_payment_date){
+                $rental->update(['status'=>'expired']);
+                continue;
+            }
             InvoiceModel::create([
                 'property_id' => $invoices[$i]->property_id,
                 'user_id' => $invoices[$i]->user_id,

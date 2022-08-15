@@ -48,7 +48,8 @@ class Rental extends Controller
     public function acceptRental(Request $request, $id)
     {
         $date = $request->input('started_at');
-        PropertyTenantModel::where('id', $id)->update(['status'=>'renting', 'started_at'=>$date]);
+        $rental = PropertyTenantModel::find($id);
+        PropertyTenantModel::where('id', $id)->update(['status'=>'renting', 'started_at'=>$date, 'end_at'=>Carbon::createFromFormat('Y-m-d', $date)->addMonths($rental->interval)]);
         $rental = PropertyTenantModel::find($id);
         InvoiceModel::create([
             'property_id' => $rental->property_id,

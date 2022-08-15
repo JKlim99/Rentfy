@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Models\PropertyModel;
 use App\Models\PropertyImageModel;
@@ -94,6 +95,17 @@ class Property extends Controller
             'started_at' => $date,
             'status' => 'pending'
         ]);
+
+        $property = PropertyModel::find($property_id);
+        $owner = UserModel::find($property->user_id);
+
+        $data = array('greet' => 'Hi '.$owner->first_name.', ', 'messages' => 'There is a new rental request on "'.$property->name.'" has been requested by an user. ', 'uri' => '/rental');
+        $to_email = $owner->email;
+        $mailSubject = "Rentfy | New Rental Request Arrived!";
+        Mail::send('emails.mail', $data, function($message) use ($to_email, $mailSubject) {
+            $message->to($to_email)
+                    ->subject($mailSubject);
+        });
 
         return redirect('/property/'.$property_id);
     }

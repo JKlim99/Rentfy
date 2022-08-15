@@ -29,7 +29,7 @@
                                 <p class="mb-0">Tenant Name</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0">{{ucfirst($rental->first_name).' '.ucfirst($rental->last_name)}}</p>
+                                <p class="text-muted mb-0"><a href="/profile/{{$rental->user_id}}" target="_blank">{{ucfirst($rental->first_name).' '.ucfirst($rental->last_name)}} <i class="fa-solid fa-up-right-from-square"></i></a></p>
                             </div>
                         </div>
                         <hr>
@@ -64,7 +64,7 @@
                             @if($rental->status == 'pending')
                             <hr>
                             <div class="text-center">
-                                <input type="submit" class="btn btn-primary" value="Accept"/>
+                                <input type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to accept the rental request?');" value="Accept"/>
                                 <a class="btn btn-danger" href="/rejectrental/{{$rental->id}}" onclick="return confirm('Are you sure you want to reject the rental request?');">Reject</a>
                             </div>
                             @elseif($rental->status == 'renting')
@@ -91,6 +91,7 @@
                                     <th scope="col">Amount</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Issue Date</th>
+                                    <th scope="col">Due On</th>
                                     <th scope="col">Paid On</th>
                                 </tr>
                             </thead>
@@ -100,8 +101,9 @@
                                     <td>INV-{{$invoice->id}}</td>
                                     <td>{{$invoice->property->name}}</td>
                                     <td>RM {{$invoice->amount}}</td>
-                                    <td>@if($invoice->payment_date) PAID @else NOT PAID @endif</td>
+                                    <td>@if($invoice->payment_date) PAID @else @if($invoice->created_at < \Carbon\Carbon::now()->addDays(-14)->format('Y-m-d')) <p style="color:red">OVERDUE</p> @else NOT PAID @endif @endif</td>
                                     <td>{{\Carbon\Carbon::parse($invoice->created_at)->format('d M Y')}}</td>
+                                    <td>{{\Carbon\Carbon::parse($invoice->created_at)->addDays(14)->format('d M Y')}}</td>
                                     @if($invoice->payment_date)
                                     <td>{{\Carbon\Carbon::parse($invoice->payment_date)->format('d M Y')}}</td>
                                     @else
