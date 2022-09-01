@@ -124,7 +124,7 @@ if($user->id == $loggedInUser){
 				<div class="card-body text-center">
 					<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
 						class="rounded-circle img-fluid" style="width: 150px;">
-					<h5 class="my-3">{{ucfirst($user->first_name)}} @if($owner) (You) @endif</h5>
+					<h5 class="my-3">{{ucfirst($user->first_name)}} @if($owner) (Me) @endif</h5>
 					<p class="text-muted mb-4">{{ucfirst($user->state)}}</p>
 					<div class="d-flex justify-content-center mb-2">
 						<a type="button" class="btn btn-primary ms-1" href="/profile/{{$user->id}}">View Profile</a>

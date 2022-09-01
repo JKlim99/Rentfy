@@ -33,7 +33,7 @@ class Login extends Controller
 
         if($user->user_type == 'landlord')
         {
-            return redirect('/profile/'.$user->id);
+            return redirect('/dashboard');
         }
 
         return redirect('/');

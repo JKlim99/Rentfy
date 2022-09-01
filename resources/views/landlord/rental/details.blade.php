@@ -58,7 +58,7 @@
                                     <p class="mb-0">Start Date</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><input type="date" class="form-control" name="started_at" value="{{\Carbon\Carbon::now()->format('Y-m-d')}}" required @if($rental->status != 'pending') disabled @endif/></p>
+                                    <p class="text-muted mb-0"><input type="date" class="form-control" name="started_at" value="{{$rental->started_at}}" required @if($rental->status != 'pending') disabled @endif/></p>
                                 </div>
                             </div>
                             @if($rental->status == 'pending')

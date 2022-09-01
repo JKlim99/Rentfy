@@ -37,7 +37,7 @@ $service_count = 0;
 					<h5 class="my-3">{{ucfirst($owner->first_name)}}</h5>
 					<p class="text-muted mb-4">{{ucfirst($owner->state)}}</p>
 					<div class="d-flex justify-content-center mb-2">
-						<a type="button" class="btn btn-primary ms-1" href="/profile/{{$owner->id}}">View Profile</a>
+						<a type="button" class="btn btn-primary ms-1" href="/profile/{{$owner->id}}" target="_blank">View Profile</a>
 						<a type="button" class="btn btn-outline-primary ms-1" href="https://wa.me/{{$owner->phone_number}}" target="_blank">Message</a>
 					</div>
 				</div>

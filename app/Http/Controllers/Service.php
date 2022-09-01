@@ -28,10 +28,17 @@ class Service extends Controller
         $user_id = session('id');
         $properties = DB::table('properties')
                             ->select(['properties_tenant.*', 'properties.*', 'properties_tenant.id as rental_id', 'users.first_name', 'users.last_name', 'users.id as owner_id'])
-                            ->join('properties_tenant', 'properties.id', '=', 'properties_tenant.property_id')
+                            ->leftJoin('properties_tenant', 'properties.id', '=', 'properties_tenant.property_id')
                             ->join('users', 'users.id', '=', 'properties.user_id')
-                            ->where('properties_tenant.user_id', $user_id)
-                            ->where('properties_tenant.status', 'renting')
+                            ->where(function($query) use ($user_id){
+                                $query->where(function($query2) use ($user_id){
+                                    $query2->where('properties_tenant.user_id', $user_id);
+                                    $query2->where('properties_tenant.status', 'renting');
+                                });
+                                $query->orWhere(function($query2) use ($user_id){
+                                    $query2->where('properties.user_id', $user_id);
+                                });
+                            })
                             ->get();
         return view('tenant.service_ordering.service_ordering3')->with(['properties'=>$properties]);
     }
