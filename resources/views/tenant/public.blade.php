@@ -29,7 +29,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid my-container-fluid">
-                <a href="/" class="logo"><i class='bx bxs-home'></i>Rentfy</a>
+                <a href="/" class="logo"><i class='bx bxs-home'></i>Rentfy @if(session('type') == 'landlord') <span class="badge bg-primary">Landlord</span> @endif</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
